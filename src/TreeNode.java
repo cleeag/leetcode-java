@@ -31,10 +31,7 @@ public class TreeNode {
         q.add(head);
         while (!q.isEmpty() && !arr.isEmpty()){
             TreeNode cur = q.poll();
-            System.out.println(cur);
             if (cur == null) continue;
-            System.out.println(cur.val);
-            System.out.println(arr);
             int left_val = arr.get(0);
             if (left_val != 0){
                 TreeNode left = new TreeNode(arr.get(0));
