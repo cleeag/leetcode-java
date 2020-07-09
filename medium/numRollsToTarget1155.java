@@ -13,10 +13,11 @@ public class numRollsToTarget1155 {
     }
 
     public int numRollsToTarget(int d, int f, int target) {
+        double mod = 1e9 + 7;
         if (d == 1 && f >= target) return 1;
         else if (d == 1) return 0;
 
-        int[][] dp = new int[d][target + 1];
+        double[][] dp = new double[d][target + 1];
         for (int i = 1; i <= f; i++) {
             if (i >= target + 1) continue;
             dp[0][i] = 1;
@@ -29,7 +30,7 @@ public class numRollsToTarget1155 {
                 for (int k = 1; k <= f; k++) {
                     if (j + k >= target + 1) continue;
 //                    System.out.println(j + " " + k + " " + (j + k));
-                    dp[i + 1][j + k] += dp[i][j];
+                    dp[i + 1][j + k] = (dp[i + 1][j + k] + dp[i][j]) % mod;
 //                    end = Math.max(j + k, end);
                 }
             }
@@ -37,6 +38,6 @@ public class numRollsToTarget1155 {
             System.out.println(Arrays.deepToString(dp));
         }
 //        System.out.println(Arrays.toString(dp[d - 1]));
-        return dp[d - 1][target] % (10 ^ 9 + 7);
+        return (int)(dp[d - 1][target] % mod);
     }
 }
