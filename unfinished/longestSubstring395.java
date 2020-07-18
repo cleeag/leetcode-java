@@ -1,0 +1,2 @@
+public class longestSubstring395 {
+}
