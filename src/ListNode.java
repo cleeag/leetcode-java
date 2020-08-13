@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class ListNode {
     int val;
     ListNode next;
@@ -12,5 +14,7 @@ public class ListNode {
     ListNode(int val, ListNode next) {
         this.val = val;
         this.next = next;
+        int[][] dp = new int[3][3];
+        System.out.println(Arrays.deepToString(dp).replace("], ", "]\n").replace("[[", "[").replace("]]", "]"));
     }
 }
