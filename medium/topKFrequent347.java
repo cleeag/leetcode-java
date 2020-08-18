@@ -13,6 +13,22 @@ public class topKFrequent347 {
     }
 
     public int[] topKFrequent(int[] nums, int k) {
+        Map<Integer, Integer> hMap = new HashMap<>();
+        for (int num : nums) {
+            hMap.put(num, hMap.getOrDefault(num, 0) + 1);
+        }
+
+        PriorityQueue<Integer> p = new PriorityQueue<>(Comparator.comparingInt(hMap::get));
+        for (Integer num : hMap.keySet()) {
+            p.offer(num);
+            if (p.size() > k) p.poll();
+        }
+        int[] ans = new int[k];
+        while (p.size() > 0) ans[p.size() - 1] = p.poll();
+        return ans;
+    }
+
+    public int[] topKFrequentBAD(int[] nums, int k) {
         Map<Integer, Integer> numCount = new HashMap<>();
         Map<Integer, List<Integer>> count2num = new HashMap<>();
         for (int num : nums) numCount.put(num, numCount.getOrDefault(num, 0) + 1);
