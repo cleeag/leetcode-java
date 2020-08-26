@@ -15,6 +15,6 @@ public class ListNode {
         this.val = val;
         this.next = next;
         int[][] dp = new int[3][3];
-        System.out.println(Arrays.deepToString(dp).replace("], ", "]\n").replace("[[", "[").replace("]]", "]"));
+        System.out.println(Arrays.deepToString(dp).replace("], ", "]\n").replace("[[", "[").replace("]]", "]") + "\n");
     }
 }
