@@ -3,7 +3,14 @@ import java.util.PriorityQueue;
 
 public class kClosest973 {
     public int[][] kClosest(int[][] points, int K) {
+
+
+
         return new int[][]{};
+    }
+
+    public void partition(){
+
     }
 
 
