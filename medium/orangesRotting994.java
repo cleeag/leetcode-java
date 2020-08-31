@@ -15,6 +15,44 @@ public class orangesRotting994 {
         int m = grid.length, n = grid[0].length;
         int[][] tracker = new int[m][n];
         Queue<int[]> q = new LinkedList<>();
+        int freshCount = 0;
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (grid[i][j] == 2) q.add(new int[]{i, j});
+                else if (grid[i][j] == 1) freshCount++;
+            }
+        }
+        int days = 0;
+        int qSize = q.size();
+        while (!q.isEmpty() && freshCount > 0) {
+            for (int i = 0; i < qSize; i++) {
+                int[] curPoint = q.poll();
+                int cI = curPoint[0], cJ = curPoint[1];
+                tracker[cI][cJ] = 1;
+                int[][] newPoints = new int[][]{{cI, cJ + 1}, {cI, cJ - 1}, {cI + 1, cJ}, {cI - 1, cJ}};
+                for (int[] p : newPoints) {
+                    int nI = p[0], nJ = p[1];
+                    if (nI >= 0 && nI < m && nJ >= 0 && nJ < n && tracker[nI][nJ] == 0 && grid[nI][nJ] == 1) {
+                        q.add(new int[]{nI, nJ});
+                        tracker[nI][nJ] = 1;
+                        freshCount--;
+                    }
+                }
+            }
+            qSize = q.size();
+            days++;
+            System.out.println(q);
+            System.out.println(Arrays.deepToString(tracker).replace("], ", "]\n").replace("[[", "[").replace("]]", "]") + "\n");
+        }
+        System.out.println(days);
+        return freshCount == 0 ? days : -1;
+    }
+
+
+    public int orangesRotting2(int[][] grid) {
+        int m = grid.length, n = grid[0].length;
+        int[][] tracker = new int[m][n];
+        Queue<int[]> q = new LinkedList<>();
         int fresh = 0;
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[0].length; j++) {
