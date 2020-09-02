@@ -5,7 +5,7 @@ public class removeInvalidParentheses301 {
     List<String> ans = new LinkedList<>();
 
     public List<String> removeInvalidParentheses(String s) {
-
+        return new LinkedList<>();
     }
 
     public void dfs(String s, int idx, StringBuilder sb, int left) {
@@ -19,7 +19,7 @@ public class removeInvalidParentheses301 {
             sb.deleteCharAt(sb.length() - 1);
         } else if (s.charAt(idx) == ')') {
             if (left > 0){
-                
+
             }
         } else {
 
